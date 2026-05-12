@@ -1,48 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Assam Weather Dashboard</title>
 
-    <style>
-        body{
-            font-family: Arial;
-            background:#111;
-            color:white;
-            padding:20px;
-        }
+<title>Assam Weather Dashboard</title>
 
-        .card{
-            background:#222;
-            padding:20px;
-            border-radius:10px;
-        }
+<style>
 
-        pre{
-            white-space:pre-wrap;
-        }
-    </style>
+body{
+    background:#111;
+    color:white;
+    font-family:Arial;
+    padding:20px;
+}
+
+.card{
+    background:#222;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:10px;
+}
+
+pre{
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <h1>🌦 Assam Weather Monitoring</h1>
 
-<div class="card">
-    <h2>Live Weather Data</h2>
-    <pre id="weather">Loading...</pre>
+<div id="weather">
+
+Loading weather data...
+
 </div>
 
 <script>
 
-fetch("latest.json")
+fetch("https://riobijoy.github.io/weather-dashboard/latest.json?v=" + Date.now())
+
 .then(response => response.json())
+
 .then(data => {
 
-    document.getElementById("weather").innerHTML =
-    JSON.stringify(data,null,2);
+    let output = "";
+
+    data.forEach(item => {
+
+        output += `
+
+        <div class="card">
+
+            <h2>${item.folder}</h2>
+
+            <p><b>Latest File:</b> ${item.latest_file}</p>
+
+            <p><b>Updated:</b> ${item.updated_time}</p>
+
+            <pre>${item.raw_weather_data}</pre>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById("weather").innerHTML = output;
 
 })
+
 .catch(error => {
+
+    console.log(error);
 
     document.getElementById("weather").innerHTML =
     "Unable to load weather data";
