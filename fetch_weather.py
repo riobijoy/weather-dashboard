@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 import os
 
-# FTP Credentials
+# FTP Credentials from GitHub Secrets
 HOST = os.getenv("FTP_HOST")
 USER = os.getenv("FTP_USER")
 PASSWORD = os.getenv("FTP_PASS")
@@ -12,42 +12,76 @@ PASSWORD = os.getenv("FTP_PASS")
 ftp = FTP(HOST)
 ftp.login(USER, PASSWORD)
 
-# Go to folder
-ftp.cwd("/NHPASSAM")
+# ROOT folder
+ROOT_FOLDER = "/"
 
-# Get all files
-files = ftp.nlst()
+# Go to root
+ftp.cwd(ROOT_FOLDER)
 
-# Keep only CSV files
-csv_files = [f for f in files if f.endswith(".csv")]
+# Get all folders
+folders = ftp.nlst()
 
-# Sort latest file
-csv_files.sort(reverse=True)
+all_data = []
 
-# Latest file
-latest_file = csv_files[0]
+# Loop through folders
+for folder in folders:
 
-print("Latest File:", latest_file)
+    try:
+        print(f"Checking Folder: {folder}")
 
-# Download latest file
-with open(latest_file, "wb") as file:
-    ftp.retrbinary(f"RETR {latest_file}", file.write)
+        # Enter folder
+        ftp.cwd(f"/{folder}")
 
+        # List files
+        files = ftp.nlst()
+
+        # CSV files only
+        csv_files = [f for f in files if f.endswith(".csv")]
+
+        # Skip empty folders
+        if not csv_files:
+            ftp.cwd(ROOT_FOLDER)
+            continue
+
+        # Latest file
+        csv_files.sort(reverse=True)
+        latest_file = csv_files[0]
+
+        print(f"Latest File: {latest_file}")
+
+        # Download latest file
+        with open(latest_file, "wb") as file:
+            ftp.retrbinary(f"RETR {latest_file}", file.write)
+
+        # Read file
+        with open(latest_file, "r") as file:
+            raw_data = file.read()
+
+        # Store data
+        all_data.append({
+            "folder": folder,
+            "latest_file": latest_file,
+            "updated_time": str(datetime.now()),
+            "raw_weather_data": raw_data
+        })
+
+        # Go back root
+        ftp.cwd(ROOT_FOLDER)
+
+    except Exception as e:
+
+        print(f"Skipping {folder}: {e}")
+
+        try:
+            ftp.cwd(ROOT_FOLDER)
+        except:
+            pass
+
+# Close FTP
 ftp.quit()
 
-# Read CSV content
-with open(latest_file, "r") as file:
-    raw_data = file.read()
-
-# Create JSON
-data = {
-    "latest_file": latest_file,
-    "updated_time": str(datetime.now()),
-    "raw_weather_data": raw_data
-}
-
-# Save JSON
+# Save combined JSON
 with open("latest.json", "w") as json_file:
-    json.dump(data, json_file, indent=4)
+    json.dump(all_data, json_file, indent=4)
 
-print("Weather data updated successfully")
+print("All weather data updated successfully")
