@@ -2,49 +2,49 @@
     {
         "folder": "Archive_NHP_Fremaa",
         "latest_file": "TSSW_240731_230000_5604D2AE.csv",
-        "updated_time": "2026-05-12 22:47:47.067689",
+        "updated_time": "2026-05-12 23:46:29.395042",
         "raw_weather_data": "                                                                                       \n&5604D2AE,31/07/24 23:00,7002465142,10.9,49.946,--,--,--,--\n\n"
     },
     {
         "folder": "DATA_ARCHIVE_20-02-2025",
         "latest_file": "TSSW_240801_120000_5604D2AE.csv",
-        "updated_time": "2026-05-12 22:47:53.108527",
+        "updated_time": "2026-05-12 23:46:35.708042",
         "raw_weather_data": "                                                                                       \n&5604D2AE,01/08/24 12:00,7002465142,11.0,49.946,--,--,--,--\n\n"
     },
     {
         "folder": "FREMAANHP02",
         "latest_file": "TSSW_260507_120000_5603BBAE.csv",
-        "updated_time": "2026-05-12 22:48:00.515134",
+        "updated_time": "2026-05-12 23:46:43.876439",
         "raw_weather_data": "&Station ID, Date and Time, MobileNumber,Battery,WaterLevel,HourlyRain,Dailyrain, AT,SnowDepth,Evaporation,WS,WD,At.pressure,RH,Sun Radiation\n5603BBAE,07/05/26 12:00,7428460351,14.7,--,0.00,0.00,30.90,--,1.10,1.20,322,600.20,066,709.2\n\n"
     },
     {
         "folder": "NHPASSAM",
         "latest_file": "TSSW_300127_190000_56038E34.csv",
-        "updated_time": "2026-05-12 22:49:04.827837",
+        "updated_time": "2026-05-12 23:47:49.342910",
         "raw_weather_data": "                                                                                       \n&56038E34,27/01/30 19:00,7428457912,12.7,--,000.00,000.00,--,--\n\n"
     },
     {
         "folder": "stationInfo",
         "latest_file": "station_id.csv",
-        "updated_time": "2026-05-12 22:49:07.858643",
+        "updated_time": "2026-05-12 23:47:52.550064",
         "raw_weather_data": "Station ID,Station name,Location,Zone,Latitude,Longitude,Type\nDDDD5608,Dhamdhama Senior Secondary School,Beki,LowerAssam,26.5608,91.4804,ARG\nDDDD1116,Teleria,Beki,LowerAssam,26.399,91.153,ARG\nDDDD1111,GKB College,Beki,LowerAssam,26.574,90.9858,ARG\nDDDD1115,Panbari High school,Beki,LowerAssam,26.5964,90.8303,ARG\nDDDD1112,Tirap High School,Buridihing,UpperAssam,27.346,95.852,ARG\nDDDD1113,Sologuri Aghunibari M. V. School,Buridihing,UpperAssam,27.3036,95.0599,ARG\nDDDD1114,Tingrai Rajnikanta Barua Higher Secondary School,Buridihing,UpperAssam,27.4577,95.5817,ARG\nFFFF1111,\"Molung Bengali gaon,Makum Tea Garden\",\u00a0Tinsukia,LowerAssam,27.3014,94.4207,AWS\nFFFF1112,\"Water Resources Inspection Bunglow, Dibrugarh W.R Division, Near Tipling High School\",Buridihing,LowerAssam,27.3339,95.3301,AWS\nFFFF1113,Laipuli High School,Buridihing,LowerAssam,27.4523,95.2954,AWS\nFFFF1114,Dikom Parbarti Devi Middle English School,Buridihing,LowerAssam,27.4614,95.0718,AWS\nFFFF1115,Modhupur Block Development Office,Beki,LowerAssam,26.4485,91.3433,AWS\nFFFF1116,Medhirtary High School,Beki,LowerAssam,26.3035,90.9547,AWS\nFFFF1117,Dangri Gaon,Beki,LowerAssam,26.71,91.25,AWS\nFFFF1118,\"Adarsha Vidyalaya, Boro Bazar, Bhumkipara\",Beki,LowerAssam,26.6028,90.6458,AWS\nFFFF1119,No. 1 Santipur L P School,Jiadhal,CentralAssam,27.5485,94.4762,AWS\nFFFF1110,Jairampur Higher Secondary School,Jiadhal,CentralAssam,27.513,94.436,AWS\nFFFF3526,Rupjyoti Higher Secondary School,Jiadhal,CentralAssam,27.3526,94.4333,AWS\nFFFF1121,Bordoibam Gram Panchayat office (Public Facilation Centre),Jiadhal,CentralAssam,27.3114,94.388,AWS\nEEEE1111,R. Tingrai at Tingrai bridge,Buridihing,UpperAssam,27.36298611,95.21397778,AWLR\nEEEE3330,Near Tipling ghat High School,Buridihing,UpperAssam,27.333,95.3248,AWLR\nEEEE1112,R. Sessa at NH. 37 Bridge,Buridihing,UpperAssam,27.33854167,94.86287222,AWLR\nEEEE1113,R. Gela-Disam at Aghunibari,Buridihing,UpperAssam,27.30301944,95.06503889,AWLR\nEEEE1114,Irrigation Department Pump station,Buridihing,UpperAss"
     },
     {
         "folder": "temp_archive",
         "latest_file": "FFFF3526_240731_100000_FFFF3526.csv",
-        "updated_time": "2026-05-12 22:49:11.432448",
+        "updated_time": "2026-05-12 23:47:56.359213",
         "raw_weather_data": "&Station ID, Date and Time, MobileNumber,Battery,WaterLevel,HourlyRain,Dailyrain, AT,SnowDepth,Evaporation,WS,WD,At.pressure,RH,Sun Radiation\n&FFFF3526,31/07/24 10:00,9957518621,10.6,--,000.00,000.00,+36.0,--,000,000.0,359,0994.3,066,0033.0\n\n"
     },
     {
         "folder": "temp_archive_04_03_2024",
         "latest_file": "TSSW_250107_050000_EEEE3330.csv",
-        "updated_time": "2026-05-12 22:49:19.234002",
+        "updated_time": "2026-05-12 23:48:04.797099",
         "raw_weather_data": "                                                                                       \n&EEEE3330,06/01/25 08:00,7428460336,13.9,90.890,--,--,--,--\n&EEEE3330,06/01/25 09:00,7428460336,13.8,90.890,--,--,--,--\n&EEEE3330,06/01/25 10:00,7428460336,13.8,90.890,--,--,--,--\n&EEEE3330,06/01/25 16:00,7428460336,11.8,100.000,--,--,--,--\n&EEEE3330,06/01/25 22:00,7428460336,12.0,100.000,--,--,--,--\n&EEEE3330,07/01/25 04:00,7428460336,11.9,100.000,--,--,--,--\n&EEEE3330,07/01/25 05:00,7428460336,11.9,100.000,--,--,--,--\n\n"
     },
     {
         "folder": "temp_archive_27_02_2025",
         "latest_file": "TSSW_250107_050000_EEEE3330.csv",
-        "updated_time": "2026-05-12 22:49:27.212464",
+        "updated_time": "2026-05-12 23:48:13.318502",
         "raw_weather_data": "                                                                                       \n&EEEE3330,06/01/25 08:00,7428460336,13.9,90.890,--,--,--,--\n&EEEE3330,06/01/25 09:00,7428460336,13.8,90.890,--,--,--,--\n&EEEE3330,06/01/25 10:00,7428460336,13.8,90.890,--,--,--,--\n&EEEE3330,06/01/25 16:00,7428460336,11.8,100.000,--,--,--,--\n&EEEE3330,06/01/25 22:00,7428460336,12.0,100.000,--,--,--,--\n&EEEE3330,07/01/25 04:00,7428460336,11.9,100.000,--,--,--,--\n&EEEE3330,07/01/25 05:00,7428460336,11.9,100.000,--,--,--,--\n\n"
     }
 ]
