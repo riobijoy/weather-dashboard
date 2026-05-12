@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Weather Dashboard</title>
+    <title>Assam Weather Dashboard</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:#111;
+            color:white;
+            padding:20px;
+        }
+
+        .card{
+            background:#222;
+            padding:20px;
+            border-radius:10px;
+        }
+
+        pre{
+            white-space:pre-wrap;
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>Weather Monitoring System</h1>
+<h1>🌦 Assam Weather Monitoring</h1>
 
-<h2>GitHub Pages Working Successfully</h2>
+<div class="card">
+    <h2>Live Weather Data</h2>
+    <pre id="weather">Loading...</pre>
+</div>
+
+<script>
+
+fetch("latest.json")
+.then(response => response.json())
+.then(data => {
+
+    document.getElementById("weather").innerHTML =
+    JSON.stringify(data,null,2);
+
+})
+.catch(error => {
+
+    document.getElementById("weather").innerHTML =
+    "Unable to load weather data";
+
+});
+
+</script>
 
 </body>
 </html>
