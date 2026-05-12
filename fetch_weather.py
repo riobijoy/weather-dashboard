@@ -7,44 +7,44 @@ import os
 HOST = os.getenv("FTP_HOST")
 USER = os.getenv("FTP_USER")
 PASSWORD = os.getenv("FTP_PASS")
+PORT = int(os.getenv("FTP_PORT", 21))
 
 # Connect FTP
-ftp = FTP(HOST)
+ftp = FTP()
+ftp.connect(HOST, PORT)
 ftp.login(USER, PASSWORD)
 
-# ROOT folder
+print("Connected Successfully")
+
+# Root folder
 ROOT_FOLDER = "/"
 
-# Go to root
+# Go root
 ftp.cwd(ROOT_FOLDER)
 
-# Get all folders
-folders = ftp.nlst()
+# Get all folders/files
+items = ftp.nlst()
 
 all_data = []
 
-# Loop through folders
-for folder in folders:
+for item in items:
 
     try:
-        print(f"Checking Folder: {folder}")
 
-        # Enter folder
-        ftp.cwd(f"/{folder}")
+        print(f"Checking: {item}")
 
-        # List files
+        ftp.cwd(f"/{item}")
+
         files = ftp.nlst()
 
-        # CSV files only
         csv_files = [f for f in files if f.endswith(".csv")]
 
-        # Skip empty folders
         if not csv_files:
             ftp.cwd(ROOT_FOLDER)
             continue
 
-        # Latest file
         csv_files.sort(reverse=True)
+
         latest_file = csv_files[0]
 
         print(f"Latest File: {latest_file}")
@@ -53,35 +53,32 @@ for folder in folders:
         with open(latest_file, "wb") as file:
             ftp.retrbinary(f"RETR {latest_file}", file.write)
 
-        # Read file
-        with open(latest_file, "r") as file:
+        # Read CSV
+        with open(latest_file, "r", encoding="utf-8", errors="ignore") as file:
             raw_data = file.read()
 
-        # Store data
         all_data.append({
-            "folder": folder,
+            "folder": item,
             "latest_file": latest_file,
             "updated_time": str(datetime.now()),
-            "raw_weather_data": raw_data
+            "raw_weather_data": raw_data[:2000]
         })
 
-        # Go back root
         ftp.cwd(ROOT_FOLDER)
 
     except Exception as e:
 
-        print(f"Skipping {folder}: {e}")
+        print(f"Skipping {item}: {e}")
 
         try:
             ftp.cwd(ROOT_FOLDER)
         except:
             pass
 
-# Close FTP
 ftp.quit()
 
-# Save combined JSON
+# Save JSON
 with open("latest.json", "w") as json_file:
     json.dump(all_data, json_file, indent=4)
 
-print("All weather data updated successfully")
+print("Weather data updated successfully")
