@@ -14,6 +14,10 @@ body{
     padding:20px;
 }
 
+h1{
+    margin-bottom:20px;
+}
+
 input{
     width:100%;
     padding:15px;
@@ -36,6 +40,7 @@ button{
     padding:10px 15px;
     border-radius:8px;
     cursor:pointer;
+    margin-top:10px;
 }
 
 iframe{
@@ -44,6 +49,7 @@ iframe{
     border:none;
     background:white;
     margin-top:20px;
+    border-radius:10px;
 }
 
 </style>
@@ -54,11 +60,17 @@ iframe{
 
 <h1>🌦 Assam Weather Data Portal</h1>
 
-<input type="text"
+<input
+type="text"
 id="searchBox"
-placeholder="Search Station ID...">
+placeholder="Search Station ID..."
+>
 
-<div id="results"></div>
+<div id="results">
+
+Loading data...
+
+</div>
 
 <iframe id="viewer"></iframe>
 
@@ -66,17 +78,32 @@ placeholder="Search Station ID...">
 
 let allFiles = [];
 
-fetch("./files.json?v=" + Date.now())
+async function loadData(){
 
-.then(response => response.json())
+    try{
 
-.then(data => {
+        const response = await fetch(
+            "https://riobijoy.github.io/weather-dashboard/files.json?v=" + Date.now()
+        );
 
-    allFiles = data;
+        const data = await response.json();
 
-    showResults(data);
+        allFiles = data;
 
-});
+        showResults(data);
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        document.getElementById("results").innerHTML =
+        "Unable to load data";
+
+    }
+
+}
 
 function showResults(data){
 
@@ -107,11 +134,13 @@ function showResults(data){
     });
 
     document.getElementById("results").innerHTML = html;
+
 }
 
 function viewFile(file){
 
-    document.getElementById("viewer").src = file;
+    document.getElementById("viewer").src =
+    "https://riobijoy.github.io/weather-dashboard/" + file;
 
 }
 
@@ -119,9 +148,9 @@ document.getElementById("searchBox")
 
 .addEventListener("keyup", function(){
 
-    let value = this.value.toLowerCase();
+    const value = this.value.toLowerCase();
 
-    let filtered = allFiles.filter(item =>
+    const filtered = allFiles.filter(item =>
 
         item.station_id.toLowerCase().includes(value)
 
@@ -130,6 +159,8 @@ document.getElementById("searchBox")
     showResults(filtered);
 
 });
+
+loadData();
 
 </script>
 
