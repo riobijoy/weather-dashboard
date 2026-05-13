@@ -1,8 +1,6 @@
 from ftplib import FTP
 import json
-from datetime import datetime
 import os
-import csv
 
 # FTP Credentials
 HOST = os.getenv("FTP_HOST")
@@ -23,69 +21,56 @@ ftp.cwd(ROOT_FOLDER)
 
 items = ftp.nlst()
 
-all_data = []
+all_files = []
 
-for item in items:
+# Create preview folder
+os.makedirs("preview", exist_ok=True)
+
+for folder in items:
 
     try:
 
-        ftp.cwd(f"/{item}")
+        ftp.cwd(f"/{folder}")
 
         files = ftp.nlst()
 
         csv_files = [f for f in files if f.endswith(".csv")]
 
-        if not csv_files:
-            ftp.cwd(ROOT_FOLDER)
-            continue
-
+        # Latest 5 files only
         csv_files.sort(reverse=True)
 
-        latest_file = csv_files[0]
+        for file in csv_files[:5]:
 
-        temp_file = f"temp_{latest_file}"
+            try:
 
-        with open(temp_file, "wb") as file:
-            ftp.retrbinary(f"RETR {latest_file}", file.write)
+                station_id = "UNKNOWN"
 
-        with open(temp_file, "r", encoding="utf-8", errors="ignore") as file:
+                parts = file.replace(".csv","").split("_")
 
-            lines = file.readlines()
+                if len(parts) >= 4:
+                    station_id = parts[-1]
 
-        os.remove(temp_file)
+                local_file = f"preview/{folder}_{file}"
 
-        clean_lines = [line.strip().replace("&", "") for line in lines if line.strip()]
+                # Download preview copy
+                with open(local_file, "wb") as lf:
+                    ftp.retrbinary(f"RETR {file}", lf.write)
 
-        latest_row = clean_lines[-1]
+                all_files.append({
+                    "folder": folder,
+                    "file": file,
+                    "station_id": station_id,
+                    "preview_file": local_file
+                })
 
-        values = latest_row.split(",")
-
-        station_id = values[0] if len(values) > 0 else "--"
-        datetime_value = values[1] if len(values) > 1 else "--"
-        battery = values[3] if len(values) > 3 else "--"
-        water_level = values[4] if len(values) > 4 else "--"
-        hourly_rain = values[5] if len(values) > 5 else "--"
-        daily_rain = values[6] if len(values) > 6 else "--"
-        temperature = values[7] if len(values) > 7 else "--"
-
-        all_data.append({
-            "folder": item,
-            "station_id": station_id,
-            "datetime": datetime_value,
-            "battery": battery,
-            "water_level": water_level,
-            "hourly_rain": hourly_rain,
-            "daily_rain": daily_rain,
-            "temperature": temperature,
-            "latest_file": latest_file,
-            "updated_time": str(datetime.now())
-        })
+            except Exception as e:
+                print(e)
 
         ftp.cwd(ROOT_FOLDER)
 
     except Exception as e:
 
-        print(f"Skipping {item}: {e}")
+        print(f"Skipping {folder}: {e}")
 
         try:
             ftp.cwd(ROOT_FOLDER)
@@ -94,7 +79,8 @@ for item in items:
 
 ftp.quit()
 
-with open("latest.json", "w") as json_file:
-    json.dump(all_data, json_file, indent=4)
+# Save index
+with open("files.json", "w") as json_file:
+    json.dump(all_files, json_file, indent=4)
 
-print("Weather dashboard updated successfully")
+print("Portal updated successfully")
