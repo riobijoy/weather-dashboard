@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Assam Weather Dashboard</title>
+<title>Assam Weather Data Portal</title>
 
 <style>
 
@@ -14,37 +14,36 @@ body{
     padding:20px;
 }
 
-h1{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:20px;
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:20px;
+    font-size:18px;
 }
 
 .card{
     background:#1e293b;
-    border-radius:15px;
-    padding:20px;
-    box-shadow:0 0 10px rgba(0,0,0,0.3);
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:10px;
 }
 
-.title{
-    font-size:22px;
-    margin-bottom:10px;
-    color:#38bdf8;
+button{
+    background:#38bdf8;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-.item{
-    margin:8px 0;
-    font-size:16px;
-}
-
-.label{
-    color:#94a3b8;
+iframe{
+    width:100%;
+    height:500px;
+    border:none;
+    background:white;
+    margin-top:20px;
 }
 
 </style>
@@ -53,21 +52,33 @@ h1{
 
 <body>
 
-<h1>🌦 Assam Weather Monitoring Dashboard</h1>
+<h1>🌦 Assam Weather Data Portal</h1>
 
-<div class="grid" id="weatherGrid">
+<input type="text"
+id="searchBox"
+placeholder="Search Station ID...">
 
-Loading Weather Data...
+<div id="results"></div>
 
-</div>
+<iframe id="viewer"></iframe>
 
 <script>
 
-fetch("https://riobijoy.github.io/weather-dashboard/latest.json?v=" + Date.now())
+let allFiles = [];
+
+fetch("./files.json?v=" + Date.now())
 
 .then(response => response.json())
 
 .then(data => {
+
+    allFiles = data;
+
+    showResults(data);
+
+});
+
+function showResults(data){
 
     let html = "";
 
@@ -77,58 +88,46 @@ fetch("https://riobijoy.github.io/weather-dashboard/latest.json?v=" + Date.now()
 
         <div class="card">
 
-            <div class="title">${item.folder}</div>
+            <h3>${item.station_id}</h3>
 
-            <div class="item">
-                <span class="label">Station ID:</span>
-                ${item.station_id}
-            </div>
+            <p><b>Folder:</b> ${item.folder}</p>
 
-            <div class="item">
-                <span class="label">Date Time:</span>
-                ${item.datetime}
-            </div>
+            <p><b>File:</b> ${item.file}</p>
 
-            <div class="item">
-                <span class="label">Battery:</span>
-                ${item.battery}
-            </div>
+            <button onclick="viewFile('${item.preview_file}')">
 
-            <div class="item">
-                <span class="label">Water Level:</span>
-                ${item.water_level}
-            </div>
+                View CSV
 
-            <div class="item">
-                <span class="label">Hourly Rain:</span>
-                ${item.hourly_rain}
-            </div>
-
-            <div class="item">
-                <span class="label">Daily Rain:</span>
-                ${item.daily_rain}
-            </div>
-
-            <div class="item">
-                <span class="label">Temperature:</span>
-                ${item.temperature} °C
-            </div>
+            </button>
 
         </div>
 
         `;
+
     });
 
-    document.getElementById("weatherGrid").innerHTML = html;
+    document.getElementById("results").innerHTML = html;
+}
 
-})
+function viewFile(file){
 
-.catch(error => {
+    document.getElementById("viewer").src = file;
 
-    console.log(error);
+}
 
-    document.getElementById("weatherGrid").innerHTML =
-    "Unable to load weather data";
+document.getElementById("searchBox")
+
+.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    let filtered = allFiles.filter(item =>
+
+        item.station_id.toLowerCase().includes(value)
+
+    );
+
+    showResults(filtered);
 
 });
 
