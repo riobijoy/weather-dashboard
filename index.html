@@ -8,22 +8,43 @@
 <style>
 
 body{
-    background:#111;
+    background:#0f172a;
     color:white;
     font-family:Arial;
     padding:20px;
 }
 
-.card{
-    background:#222;
-    padding:15px;
-    margin-bottom:15px;
-    border-radius:10px;
+h1{
+    text-align:center;
+    margin-bottom:30px;
 }
 
-pre{
-    white-space:pre-wrap;
-    word-wrap:break-word;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#1e293b;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+.title{
+    font-size:22px;
+    margin-bottom:10px;
+    color:#38bdf8;
+}
+
+.item{
+    margin:8px 0;
+    font-size:16px;
+}
+
+.label{
+    color:#94a3b8;
 }
 
 </style>
@@ -32,11 +53,11 @@ pre{
 
 <body>
 
-<h1>🌦 Assam Weather Monitoring</h1>
+<h1>🌦 Assam Weather Monitoring Dashboard</h1>
 
-<div id="weather">
+<div class="grid" id="weatherGrid">
 
-Loading weather data...
+Loading Weather Data...
 
 </div>
 
@@ -48,29 +69,57 @@ fetch("https://riobijoy.github.io/weather-dashboard/latest.json?v=" + Date.now()
 
 .then(data => {
 
-    let output = "";
+    let html = "";
 
     data.forEach(item => {
 
-        output += `
+        html += `
 
         <div class="card">
 
-            <h2>${item.folder}</h2>
+            <div class="title">${item.folder}</div>
 
-            <p><b>Latest File:</b> ${item.latest_file}</p>
+            <div class="item">
+                <span class="label">Station ID:</span>
+                ${item.station_id}
+            </div>
 
-            <p><b>Updated:</b> ${item.updated_time}</p>
+            <div class="item">
+                <span class="label">Date Time:</span>
+                ${item.datetime}
+            </div>
 
-            <pre>${item.raw_weather_data}</pre>
+            <div class="item">
+                <span class="label">Battery:</span>
+                ${item.battery}
+            </div>
+
+            <div class="item">
+                <span class="label">Water Level:</span>
+                ${item.water_level}
+            </div>
+
+            <div class="item">
+                <span class="label">Hourly Rain:</span>
+                ${item.hourly_rain}
+            </div>
+
+            <div class="item">
+                <span class="label">Daily Rain:</span>
+                ${item.daily_rain}
+            </div>
+
+            <div class="item">
+                <span class="label">Temperature:</span>
+                ${item.temperature} °C
+            </div>
 
         </div>
 
         `;
-
     });
 
-    document.getElementById("weather").innerHTML = output;
+    document.getElementById("weatherGrid").innerHTML = html;
 
 })
 
@@ -78,7 +127,7 @@ fetch("https://riobijoy.github.io/weather-dashboard/latest.json?v=" + Date.now()
 
     console.log(error);
 
-    document.getElementById("weather").innerHTML =
+    document.getElementById("weatherGrid").innerHTML =
     "Unable to load weather data";
 
 });
@@ -86,4 +135,5 @@ fetch("https://riobijoy.github.io/weather-dashboard/latest.json?v=" + Date.now()
 </script>
 
 </body>
+
 </html>
