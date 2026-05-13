@@ -20,7 +20,7 @@ box-sizing:border-box;
 
 body{
 background:#020617;
-font-family:Arial;
+font-family:Arial,sans-serif;
 color:white;
 padding:20px;
 }
@@ -33,26 +33,26 @@ margin-bottom:10px;
 
 .subtitle{
 color:#94a3b8;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
 .section-title{
 font-size:28px;
-margin:30px 0 20px;
+margin:35px 0 20px;
 color:#38bdf8;
 }
 
-.dashboard-grid{
+.grid{
 display:grid;
 grid-template-columns:
-repeat(auto-fit,minmax(300px,1fr));
+repeat(auto-fit,minmax(320px,1fr));
 gap:20px;
 }
 
 .card{
 background:#0f172a;
-padding:20px;
-border-radius:20px;
+padding:22px;
+border-radius:22px;
 border:1px solid rgba(255,255,255,0.08);
 transition:0.3s;
 }
@@ -64,7 +64,7 @@ transform:translateY(-4px);
 .station{
 font-size:24px;
 font-weight:bold;
-margin-bottom:14px;
+margin-bottom:15px;
 }
 
 .info{
@@ -83,7 +83,7 @@ display:grid;
 grid-template-columns:
 repeat(auto-fit,minmax(220px,1fr));
 gap:15px;
-margin:25px 0;
+margin-bottom:30px;
 }
 
 input{
@@ -97,21 +97,26 @@ outline:none;
 }
 
 .btn{
-margin-top:15px;
 width:100%;
 padding:13px;
 border:none;
-border-radius:12px;
+border-radius:14px;
 background:#38bdf8;
 color:black;
 font-weight:bold;
 cursor:pointer;
+margin-top:15px;
+}
+
+.clear-btn{
+background:#ef4444;
+color:white;
 }
 
 .modal{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 display:none;
 justify-content:center;
 align-items:center;
@@ -163,7 +168,7 @@ line-height:1.5;
 
 .no-data{
 text-align:center;
-margin-top:50px;
+margin-top:40px;
 color:#94a3b8;
 font-size:22px;
 }
@@ -187,7 +192,7 @@ Latest Station Data
 </div>
 
 <div
-class="dashboard-grid"
+class="grid"
 id="latestData">
 
 Loading latest data...
@@ -216,10 +221,18 @@ type="date"
 id="toDate"
 >
 
+<button
+class="btn clear-btn"
+onclick="clearFilters()">
+
+Clear Filters
+
+</button>
+
 </div>
 
 <div
-class="dashboard-grid"
+class="grid"
 id="historyData">
 
 Loading history...
@@ -259,6 +272,8 @@ onclick="closeModal()">
 let allFiles = [];
 
 async function loadLatest(){
+
+try{
 
 const response =
 await fetch("./latest.json?v=" + Date.now());
@@ -312,7 +327,19 @@ document.getElementById("latestData")
 
 }
 
+catch{
+
+document.getElementById("latestData")
+.innerHTML =
+"<div class='no-data'>Unable to load latest data</div>";
+
+}
+
+}
+
 async function loadHistory(){
+
+try{
 
 const response =
 await fetch("./files.json?v=" + Date.now());
@@ -322,7 +349,17 @@ await response.json();
 
 allFiles = data;
 
-renderHistory(data);
+renderHistory(data.slice(0,20));
+
+}
+
+catch{
+
+document.getElementById("historyData")
+.innerHTML =
+"<div class='no-data'>Unable to load history</div>";
+
+}
 
 }
 
@@ -405,7 +442,8 @@ document.getElementById("csvText")
 catch{
 
 document.getElementById("csvText")
-.innerText = "Unable to load CSV";
+.innerText =
+"Unable to load CSV";
 
 }
 
@@ -423,7 +461,8 @@ function applyFilters(){
 const station =
 document.getElementById("stationSearch")
 .value
-.toLowerCase();
+.toLowerCase()
+.trim();
 
 const fromDate =
 document.getElementById("fromDate")
@@ -436,34 +475,49 @@ document.getElementById("toDate")
 const filtered =
 allFiles.filter(item => {
 
-const matchStation =
+const stationMatch =
 item.station_id
 .toLowerCase()
 .includes(station);
 
-let matchDate = true;
+let dateMatch = true;
 
 if(fromDate){
 
-matchDate =
-matchDate &&
-item.date >= fromDate;
+dateMatch =
+dateMatch &&
+new Date(item.date) >= new Date(fromDate);
 
 }
 
 if(toDate){
 
-matchDate =
-matchDate &&
-item.date <= toDate;
+dateMatch =
+dateMatch &&
+new Date(item.date) <= new Date(toDate);
 
 }
 
-return matchStation && matchDate;
+return stationMatch && dateMatch;
 
 });
 
 renderHistory(filtered);
+
+}
+
+function clearFilters(){
+
+document.getElementById("stationSearch")
+.value = "";
+
+document.getElementById("fromDate")
+.value = "";
+
+document.getElementById("toDate")
+.value = "";
+
+renderHistory(allFiles.slice(0,20));
 
 }
 
