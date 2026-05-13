@@ -1,0 +1,224 @@
+[
+    {
+        "folder": "Archive_NHP_Fremaa",
+        "file": "TSSW_240731_230000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/Archive_NHP_Fremaa_TSSW_240731_230000_5604D2AE.csv"
+    },
+    {
+        "folder": "Archive_NHP_Fremaa",
+        "file": "TSSW_240731_220000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/Archive_NHP_Fremaa_TSSW_240731_220000_5604D2AE.csv"
+    },
+    {
+        "folder": "Archive_NHP_Fremaa",
+        "file": "TSSW_240731_210000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/Archive_NHP_Fremaa_TSSW_240731_210000_5604D2AE.csv"
+    },
+    {
+        "folder": "Archive_NHP_Fremaa",
+        "file": "TSSW_240731_200000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/Archive_NHP_Fremaa_TSSW_240731_200000_5604D2AE.csv"
+    },
+    {
+        "folder": "Archive_NHP_Fremaa",
+        "file": "TSSW_240731_190000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/Archive_NHP_Fremaa_TSSW_240731_190000_5604D2AE.csv"
+    },
+    {
+        "folder": "DATA_ARCHIVE_20-02-2025",
+        "file": "TSSW_240801_120000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/DATA_ARCHIVE_20-02-2025_TSSW_240801_120000_5604D2AE.csv"
+    },
+    {
+        "folder": "DATA_ARCHIVE_20-02-2025",
+        "file": "TSSW_240801_110000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/DATA_ARCHIVE_20-02-2025_TSSW_240801_110000_5604D2AE.csv"
+    },
+    {
+        "folder": "DATA_ARCHIVE_20-02-2025",
+        "file": "TSSW_240801_090000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/DATA_ARCHIVE_20-02-2025_TSSW_240801_090000_5604D2AE.csv"
+    },
+    {
+        "folder": "DATA_ARCHIVE_20-02-2025",
+        "file": "TSSW_240801_080000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/DATA_ARCHIVE_20-02-2025_TSSW_240801_080000_5604D2AE.csv"
+    },
+    {
+        "folder": "DATA_ARCHIVE_20-02-2025",
+        "file": "TSSW_240801_070000_5604D2AE.csv",
+        "station_id": "5604D2AE",
+        "preview_file": "preview/DATA_ARCHIVE_20-02-2025_TSSW_240801_070000_5604D2AE.csv"
+    },
+    {
+        "folder": "FREMAANHP02",
+        "file": "TSSW_260507_120000_5603BBAE.csv",
+        "station_id": "5603BBAE",
+        "preview_file": "preview/FREMAANHP02_TSSW_260507_120000_5603BBAE.csv"
+    },
+    {
+        "folder": "FREMAANHP02",
+        "file": "TSSW_260507_110000_5603BBAE.csv",
+        "station_id": "5603BBAE",
+        "preview_file": "preview/FREMAANHP02_TSSW_260507_110000_5603BBAE.csv"
+    },
+    {
+        "folder": "FREMAANHP02",
+        "file": "TSSW_260507_100000_5603BBAE.csv",
+        "station_id": "5603BBAE",
+        "preview_file": "preview/FREMAANHP02_TSSW_260507_100000_5603BBAE.csv"
+    },
+    {
+        "folder": "FREMAANHP02",
+        "file": "TSSW_260507_090000_5603BBAE.csv",
+        "station_id": "5603BBAE",
+        "preview_file": "preview/FREMAANHP02_TSSW_260507_090000_5603BBAE.csv"
+    },
+    {
+        "folder": "FREMAANHP02",
+        "file": "TSSW_260507_080000_5603BBAE.csv",
+        "station_id": "5603BBAE",
+        "preview_file": "preview/FREMAANHP02_TSSW_260507_080000_5603BBAE.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_300127_190000_56038E34.csv",
+        "station_id": "56038E34",
+        "preview_file": "preview/NHPASSAM_TSSW_300127_190000_56038E34.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_300127_180000_56038E34.csv",
+        "station_id": "56038E34",
+        "preview_file": "preview/NHPASSAM_TSSW_300127_180000_56038E34.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_300127_170000_56038E34.csv",
+        "station_id": "56038E34",
+        "preview_file": "preview/NHPASSAM_TSSW_300127_170000_56038E34.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_300127_160000_56038E34.csv",
+        "station_id": "56038E34",
+        "preview_file": "preview/NHPASSAM_TSSW_300127_160000_56038E34.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_300127_150000_56038E34.csv",
+        "station_id": "56038E34",
+        "preview_file": "preview/NHPASSAM_TSSW_300127_150000_56038E34.csv"
+    },
+    {
+        "folder": "stationInfo",
+        "file": "station_id.csv",
+        "station_id": "UNKNOWN",
+        "preview_file": "preview/stationInfo_station_id.csv"
+    },
+    {
+        "folder": "stationInfo",
+        "file": "station.csv",
+        "station_id": "UNKNOWN",
+        "preview_file": "preview/stationInfo_station.csv"
+    },
+    {
+        "folder": "temp_archive",
+        "file": "FFFF3526_240731_100000_FFFF3526.csv",
+        "station_id": "FFFF3526",
+        "preview_file": "preview/temp_archive_FFFF3526_240731_100000_FFFF3526.csv"
+    },
+    {
+        "folder": "temp_archive",
+        "file": "FFFF3526_240731_090000_FFFF3526.csv",
+        "station_id": "FFFF3526",
+        "preview_file": "preview/temp_archive_FFFF3526_240731_090000_FFFF3526.csv"
+    },
+    {
+        "folder": "temp_archive",
+        "file": "FFFF3526_240731_080000_FFFF3526.csv",
+        "station_id": "FFFF3526",
+        "preview_file": "preview/temp_archive_FFFF3526_240731_080000_FFFF3526.csv"
+    },
+    {
+        "folder": "temp_archive",
+        "file": "FFFF3526_240731_070000_FFFF3526.csv",
+        "station_id": "FFFF3526",
+        "preview_file": "preview/temp_archive_FFFF3526_240731_070000_FFFF3526.csv"
+    },
+    {
+        "folder": "temp_archive",
+        "file": "FFFF3526_240731_060000_FFFF3526.csv",
+        "station_id": "FFFF3526",
+        "preview_file": "preview/temp_archive_FFFF3526_240731_060000_FFFF3526.csv"
+    },
+    {
+        "folder": "temp_archive_04_03_2024",
+        "file": "TSSW_250107_050000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_04_03_2024_TSSW_250107_050000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_04_03_2024",
+        "file": "TSSW_250106_070000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_04_03_2024_TSSW_250106_070000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_04_03_2024",
+        "file": "TSSW_250106_060000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_04_03_2024_TSSW_250106_060000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_04_03_2024",
+        "file": "TSSW_250106_050000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_04_03_2024_TSSW_250106_050000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_04_03_2024",
+        "file": "TSSW_250106_040000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_04_03_2024_TSSW_250106_040000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_27_02_2025",
+        "file": "TSSW_250107_050000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_27_02_2025_TSSW_250107_050000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_27_02_2025",
+        "file": "TSSW_250106_070000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_27_02_2025_TSSW_250106_070000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_27_02_2025",
+        "file": "TSSW_250106_060000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_27_02_2025_TSSW_250106_060000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_27_02_2025",
+        "file": "TSSW_250106_050000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_27_02_2025_TSSW_250106_050000_EEEE3330.csv"
+    },
+    {
+        "folder": "temp_archive_27_02_2025",
+        "file": "TSSW_250106_040000_EEEE3330.csv",
+        "station_id": "EEEE3330",
+        "preview_file": "preview/temp_archive_27_02_2025_TSSW_250106_040000_EEEE3330.csv"
+    }
+]
