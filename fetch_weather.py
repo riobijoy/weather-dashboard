@@ -2,8 +2,9 @@ from ftplib import FTP
 import json
 from datetime import datetime
 import os
+import csv
 
-# FTP Credentials from GitHub Secrets
+# FTP Credentials
 HOST = os.getenv("FTP_HOST")
 USER = os.getenv("FTP_USER")
 PASSWORD = os.getenv("FTP_PASS")
@@ -16,13 +17,10 @@ ftp.login(USER, PASSWORD)
 
 print("Connected Successfully")
 
-# Root folder
 ROOT_FOLDER = "/"
 
-# Go root
 ftp.cwd(ROOT_FOLDER)
 
-# Get all folders/files
 items = ftp.nlst()
 
 all_data = []
@@ -30,8 +28,6 @@ all_data = []
 for item in items:
 
     try:
-
-        print(f"Checking: {item}")
 
         ftp.cwd(f"/{item}")
 
@@ -47,21 +43,42 @@ for item in items:
 
         latest_file = csv_files[0]
 
-        print(f"Latest File: {latest_file}")
+        temp_file = f"temp_{latest_file}"
 
-        # Download latest file
-        with open(latest_file, "wb") as file:
+        with open(temp_file, "wb") as file:
             ftp.retrbinary(f"RETR {latest_file}", file.write)
 
-        # Read CSV
-        with open(latest_file, "r", encoding="utf-8", errors="ignore") as file:
-            raw_data = file.read()
+        with open(temp_file, "r", encoding="utf-8", errors="ignore") as file:
+
+            lines = file.readlines()
+
+        os.remove(temp_file)
+
+        clean_lines = [line.strip().replace("&", "") for line in lines if line.strip()]
+
+        latest_row = clean_lines[-1]
+
+        values = latest_row.split(",")
+
+        station_id = values[0] if len(values) > 0 else "--"
+        datetime_value = values[1] if len(values) > 1 else "--"
+        battery = values[3] if len(values) > 3 else "--"
+        water_level = values[4] if len(values) > 4 else "--"
+        hourly_rain = values[5] if len(values) > 5 else "--"
+        daily_rain = values[6] if len(values) > 6 else "--"
+        temperature = values[7] if len(values) > 7 else "--"
 
         all_data.append({
             "folder": item,
+            "station_id": station_id,
+            "datetime": datetime_value,
+            "battery": battery,
+            "water_level": water_level,
+            "hourly_rain": hourly_rain,
+            "daily_rain": daily_rain,
+            "temperature": temperature,
             "latest_file": latest_file,
-            "updated_time": str(datetime.now()),
-            "raw_weather_data": raw_data[:2000]
+            "updated_time": str(datetime.now())
         })
 
         ftp.cwd(ROOT_FOLDER)
@@ -77,8 +94,7 @@ for item in items:
 
 ftp.quit()
 
-# Save JSON
 with open("latest.json", "w") as json_file:
     json.dump(all_data, json_file, indent=4)
 
-print("Weather data updated successfully")
+print("Weather dashboard updated successfully")
