@@ -9,6 +9,8 @@ FTP_PASS = os.environ['FTP_PASS']
 ftp = FTP(FTP_HOST)
 ftp.login(FTP_USER, FTP_PASS)
 
+print("Connected FTP")
+
 folders = [
     "FREMAANHP02",
     "NHPASSAM"
@@ -19,22 +21,31 @@ latest_station = {}
 
 os.makedirs("preview", exist_ok=True)
 
+# LIST ROOT
+print("ROOT:")
+print(ftp.nlst())
+
 for folder in folders:
 
     try:
 
-        ftp.cwd(f"/NHPASSAM/{folder}")
+        print(f"Opening folder: {folder}")
+
+        # IMPORTANT CHANGE
+        ftp.cwd(folder)
 
         files = ftp.nlst()
 
+        print(files[:5])
+
         csv_files = [
             f for f in files
-            if f.endswith(".csv")
+            if f.lower().endswith(".csv")
         ]
 
         csv_files.sort(reverse=True)
 
-        for file in csv_files[:200]:
+        for file in csv_files[:50]:
 
             local_file = f"preview/{folder}_{file}"
 
@@ -54,13 +65,15 @@ for folder in folders:
 
                     with open(local_file, "r", errors="ignore") as rf:
 
-                        lines = rf.readlines()
+                        text = rf.read()
+
+                        lines = text.splitlines()
 
                         for line in lines:
 
-                            if "&" in line:
+                            if "," in line and "&" in line:
 
-                                parts = line.strip().split(",")
+                                parts = line.split(",")
 
                                 if len(parts) >= 2:
 
@@ -72,23 +85,13 @@ for folder in folders:
 
                                     raw_date = parts[1].strip()
 
-                                    try:
-
-                                        d,m,y = raw_date.split(" ")[0].split("/")
-
-                                    except:
-
-                                        try:
-                                            d,m,y = raw_date.split(" ")[0].split("-")
-                                        except:
-                                            continue
-
-                                    csv_date = f"20{y}-{m}-{d}"
+                                    csv_date = raw_date
 
                                     break
 
-                except:
-                    pass
+                except Exception as e:
+
+                    print("CSV Read Error:", e)
 
                 item = {
                     "folder": folder,
@@ -102,11 +105,17 @@ for folder in folders:
 
                 latest_station[station_id] = item
 
-            except:
-                pass
+                print(item)
 
-    except:
-        pass
+            except Exception as e:
+
+                print("Download Error:", e)
+
+        ftp.cwd("..")
+
+    except Exception as e:
+
+        print("Folder Error:", e)
 
 with open("files.json", "w") as f:
 
@@ -126,4 +135,4 @@ with open("latest.json", "w") as f:
 
 ftp.quit()
 
-print("Weather data updated")
+print("DONE")
