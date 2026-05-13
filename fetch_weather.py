@@ -1,86 +1,116 @@
 from ftplib import FTP
-import json
 import os
+import json
 
-# FTP Credentials
-HOST = os.getenv("FTP_HOST")
-USER = os.getenv("FTP_USER")
-PASSWORD = os.getenv("FTP_PASS")
-PORT = int(os.getenv("FTP_PORT", 21))
+FTP_HOST = os.environ['FTP_HOST']
+FTP_USER = os.environ['FTP_USER']
+FTP_PASS = os.environ['FTP_PASS']
 
-# Connect FTP
-ftp = FTP()
-ftp.connect(HOST, PORT)
-ftp.login(USER, PASSWORD)
+ftp = FTP(FTP_HOST)
+ftp.login(FTP_USER, FTP_PASS)
 
-print("Connected Successfully")
-
-ROOT_FOLDER = "/"
-
-ftp.cwd(ROOT_FOLDER)
-
-items = ftp.nlst()
+folders = [
+    "FREMAANHP02",
+    "NHPASSAM"
+]
 
 all_files = []
+latest_station = {}
 
-# Create preview folder
 os.makedirs("preview", exist_ok=True)
 
-for folder in items:
+for folder in folders:
 
     try:
 
-        ftp.cwd(f"/{folder}")
+        ftp.cwd(f"/NHPASSAM/{folder}")
 
         files = ftp.nlst()
 
-        csv_files = [f for f in files if f.endswith(".csv")]
+        csv_files = [
+            f for f in files
+            if f.endswith(".csv")
+        ]
 
-        # Latest 5 files only
         csv_files.sort(reverse=True)
 
-        for file in csv_files[:5]:
+        for file in csv_files[:100]:
+
+            local_file = f"preview/{folder}_{file}"
 
             try:
 
+                with open(local_file, "wb") as lf:
+
+                    ftp.retrbinary(
+                        f"RETR {file}",
+                        lf.write
+                    )
+
                 station_id = "UNKNOWN"
 
-                parts = file.replace(".csv","").split("_")
+                try:
 
-                if len(parts) >= 4:
-                    station_id = parts[-1]
+                    station_id = file.split("_")[-1].replace(".csv","")
 
-                local_file = f"preview/{folder}_{file}"
+                except:
+                    pass
 
-                # Download preview copy
-                with open(local_file, "wb") as lf:
-                    ftp.retrbinary(f"RETR {file}", lf.write)
+                file_date = ""
 
-                all_files.append({
+                try:
+
+                    parts = file.split("_")
+
+                    raw = parts[1]
+
+                    yy = raw[0:2]
+                    mm = raw[2:4]
+                    dd = raw[4:6]
+
+                    file_date = f"20{yy}-{mm}-{dd}"
+
+                except:
+                    pass
+
+                item = {
                     "folder": folder,
                     "file": file,
                     "station_id": station_id,
+                    "date": file_date,
                     "preview_file": local_file
-                })
+                }
 
-            except Exception as e:
-                print(e)
+                all_files.append(item)
 
-        ftp.cwd(ROOT_FOLDER)
+                latest_station[station_id] = item
 
-    except Exception as e:
+            except:
+                pass
 
-        print(f"Skipping {folder}: {e}")
+    except:
+        pass
 
-        try:
-            ftp.cwd(ROOT_FOLDER)
-        except:
-            pass
+# SAVE HISTORY
+
+with open("files.json", "w") as f:
+
+    json.dump(
+        all_files,
+        f,
+        indent=4
+    )
+
+# SAVE LATEST DASHBOARD
+
+with open("latest.json", "w") as f:
+
+    json.dump(
+        list(latest_station.values()),
+        f,
+        indent=4
+    )
 
 ftp.quit()
 
-# Save index
-with open("files.json", "w") as json_file:
-    json.dump(all_files, json_file, indent=4)
-
-print("Portal updated successfully")
+print("Weather data updated")
