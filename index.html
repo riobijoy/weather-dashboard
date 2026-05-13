@@ -4,7 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Assam Weather Dashboard</title>
 
@@ -18,7 +20,7 @@ box-sizing:border-box;
 
 body{
 background:#020617;
-font-family:Arial;
+font-family:Arial,sans-serif;
 color:white;
 padding:20px;
 }
@@ -52,6 +54,11 @@ background:#0f172a;
 padding:20px;
 border-radius:20px;
 border:1px solid rgba(255,255,255,0.08);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-4px);
 }
 
 .station{
@@ -102,7 +109,7 @@ width:100%;
 }
 
 .clear-btn{
-background:red;
+background:#ef4444;
 color:white;
 }
 
@@ -203,7 +210,7 @@ placeholder="Search Station ID..."
 <input
 type="text"
 id="dateSearch"
-placeholder="Search Date (dd-mm-yyyy)"
+placeholder="Search Date (example: 2026-05-13)"
 >
 
 <button
@@ -253,6 +260,8 @@ onclick="closeModal()">
 let allFiles = [];
 
 async function loadLatest(){
+
+try{
 
 const response =
 await fetch("./latest.json?v=" + Date.now());
@@ -306,7 +315,19 @@ document.getElementById("latestData")
 
 }
 
+catch{
+
+document.getElementById("latestData")
+.innerHTML =
+"<div class='no-data'>Unable to load latest data</div>";
+
+}
+
+}
+
 async function loadHistory(){
+
+try{
 
 const response =
 await fetch("./files.json?v=" + Date.now());
@@ -317,6 +338,16 @@ await response.json();
 allFiles = data;
 
 renderHistory(data.slice(0,20));
+
+}
+
+catch{
+
+document.getElementById("historyData")
+.innerHTML =
+"<div class='no-data'>Unable to load history</div>";
+
+}
 
 }
 
@@ -418,14 +449,12 @@ function applyFilters(){
 const station =
 document.getElementById("stationSearch")
 .value
-.toLowerCase()
-trim();
+.toLowerCase().trim();
 
 const date =
 document.getElementById("dateSearch")
 .value
-.toLowerCase()
-trim();
+.toLowerCase().trim();
 
 const filtered =
 allFiles.filter(item => {
