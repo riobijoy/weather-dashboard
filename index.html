@@ -4,9 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Assam Weather Dashboard</title>
 
@@ -20,45 +18,40 @@ box-sizing:border-box;
 
 body{
 background:#020617;
-font-family:Arial,sans-serif;
+font-family:Arial;
 color:white;
 padding:20px;
 }
 
 .title{
-font-size:42px;
+font-size:40px;
 font-weight:bold;
 margin-bottom:10px;
 }
 
 .subtitle{
 color:#94a3b8;
-margin-bottom:35px;
+margin-bottom:30px;
 }
 
 .section-title{
 font-size:28px;
-margin:35px 0 20px;
+margin:30px 0 20px;
 color:#38bdf8;
 }
 
 .grid{
 display:grid;
 grid-template-columns:
-repeat(auto-fit,minmax(320px,1fr));
+repeat(auto-fit,minmax(300px,1fr));
 gap:20px;
 }
 
 .card{
 background:#0f172a;
-padding:22px;
-border-radius:22px;
+padding:20px;
+border-radius:20px;
 border:1px solid rgba(255,255,255,0.08);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-4px);
 }
 
 .station{
@@ -83,7 +76,7 @@ display:grid;
 grid-template-columns:
 repeat(auto-fit,minmax(220px,1fr));
 gap:15px;
-margin-bottom:30px;
+margin-bottom:25px;
 }
 
 input{
@@ -97,7 +90,6 @@ outline:none;
 }
 
 .btn{
-width:100%;
 padding:13px;
 border:none;
 border-radius:14px;
@@ -105,11 +97,12 @@ background:#38bdf8;
 color:black;
 font-weight:bold;
 cursor:pointer;
-margin-top:15px;
+margin-top:10px;
+width:100%;
 }
 
 .clear-btn{
-background:#ef4444;
+background:red;
 color:white;
 }
 
@@ -129,7 +122,7 @@ width:100%;
 max-width:1200px;
 height:85vh;
 background:#0f172a;
-border-radius:24px;
+border-radius:20px;
 overflow:hidden;
 display:flex;
 flex-direction:column;
@@ -169,8 +162,8 @@ line-height:1.5;
 .no-data{
 text-align:center;
 margin-top:40px;
-color:#94a3b8;
 font-size:22px;
+color:#94a3b8;
 }
 
 </style>
@@ -191,12 +184,8 @@ Live FTP Weather Monitoring System
 Latest Station Data
 </div>
 
-<div
-class="grid"
-id="latestData">
-
+<div class="grid" id="latestData">
 Loading latest data...
-
 </div>
 
 <div class="section-title">
@@ -212,13 +201,9 @@ placeholder="Search Station ID..."
 >
 
 <input
-type="date"
-id="fromDate"
->
-
-<input
-type="date"
-id="toDate"
+type="text"
+id="dateSearch"
+placeholder="Search Date (dd-mm-yyyy)"
 >
 
 <button
@@ -231,12 +216,8 @@ Clear Filters
 
 </div>
 
-<div
-class="grid"
-id="historyData">
-
+<div class="grid" id="historyData">
 Loading history...
-
 </div>
 
 <div class="modal" id="modal">
@@ -272,8 +253,6 @@ onclick="closeModal()">
 let allFiles = [];
 
 async function loadLatest(){
-
-try{
 
 const response =
 await fetch("./latest.json?v=" + Date.now());
@@ -327,19 +306,7 @@ document.getElementById("latestData")
 
 }
 
-catch{
-
-document.getElementById("latestData")
-.innerHTML =
-"<div class='no-data'>Unable to load latest data</div>";
-
-}
-
-}
-
 async function loadHistory(){
-
-try{
 
 const response =
 await fetch("./files.json?v=" + Date.now());
@@ -350,16 +317,6 @@ await response.json();
 allFiles = data;
 
 renderHistory(data.slice(0,20));
-
-}
-
-catch{
-
-document.getElementById("historyData")
-.innerHTML =
-"<div class='no-data'>Unable to load history</div>";
-
-}
 
 }
 
@@ -462,15 +419,13 @@ const station =
 document.getElementById("stationSearch")
 .value
 .toLowerCase()
-.trim();
+trim();
 
-const fromDate =
-document.getElementById("fromDate")
-.value;
-
-const toDate =
-document.getElementById("toDate")
-.value;
+const date =
+document.getElementById("dateSearch")
+.value
+.toLowerCase()
+trim();
 
 const filtered =
 allFiles.filter(item => {
@@ -480,23 +435,10 @@ item.station_id
 .toLowerCase()
 .includes(station);
 
-let dateMatch = true;
-
-if(fromDate){
-
-dateMatch =
-dateMatch &&
-new Date(item.date) >= new Date(fromDate);
-
-}
-
-if(toDate){
-
-dateMatch =
-dateMatch &&
-new Date(item.date) <= new Date(toDate);
-
-}
+const dateMatch =
+item.date
+.toLowerCase()
+.includes(date);
 
 return stationMatch && dateMatch;
 
@@ -511,10 +453,7 @@ function clearFilters(){
 document.getElementById("stationSearch")
 .value = "";
 
-document.getElementById("fromDate")
-.value = "";
-
-document.getElementById("toDate")
+document.getElementById("dateSearch")
 .value = "";
 
 renderHistory(allFiles.slice(0,20));
@@ -526,12 +465,8 @@ document
 .addEventListener("keyup",applyFilters);
 
 document
-.getElementById("fromDate")
-.addEventListener("change",applyFilters);
-
-document
-.getElementById("toDate")
-.addEventListener("change",applyFilters);
+.getElementById("dateSearch")
+.addEventListener("keyup",applyFilters);
 
 loadLatest();
 
