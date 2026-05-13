@@ -34,7 +34,7 @@ for folder in folders:
 
         csv_files.sort(reverse=True)
 
-        for file in csv_files[:100]:
+        for file in csv_files[:200]:
 
             local_file = f"preview/{folder}_{file}"
 
@@ -48,27 +48,44 @@ for folder in folders:
                     )
 
                 station_id = "UNKNOWN"
+                csv_date = ""
 
                 try:
 
-                    station_id = file.split("_")[-1].replace(".csv","")
+                    with open(local_file, "r", errors="ignore") as rf:
 
-                except:
-                    pass
+                        lines = rf.readlines()
 
-                file_date = ""
+                        for line in lines:
 
-                try:
+                            if "&" in line:
 
-                    parts = file.split("_")
+                                parts = line.strip().split(",")
 
-                    raw = parts[1]
+                                if len(parts) >= 2:
 
-                    yy = raw[0:2]
-                    mm = raw[2:4]
-                    dd = raw[4:6]
+                                    station_id = (
+                                        parts[0]
+                                        .replace("&","")
+                                        .strip()
+                                    )
 
-                    file_date = f"20{yy}-{mm}-{dd}"
+                                    raw_date = parts[1].strip()
+
+                                    try:
+
+                                        d,m,y = raw_date.split(" ")[0].split("/")
+
+                                    except:
+
+                                        try:
+                                            d,m,y = raw_date.split(" ")[0].split("-")
+                                        except:
+                                            continue
+
+                                    csv_date = f"20{y}-{m}-{d}"
+
+                                    break
 
                 except:
                     pass
@@ -77,7 +94,7 @@ for folder in folders:
                     "folder": folder,
                     "file": file,
                     "station_id": station_id,
-                    "date": file_date,
+                    "date": csv_date,
                     "preview_file": local_file
                 }
 
@@ -91,8 +108,6 @@ for folder in folders:
     except:
         pass
 
-# SAVE HISTORY
-
 with open("files.json", "w") as f:
 
     json.dump(
@@ -100,8 +115,6 @@ with open("files.json", "w") as f:
         f,
         indent=4
     )
-
-# SAVE LATEST DASHBOARD
 
 with open("latest.json", "w") as f:
 
