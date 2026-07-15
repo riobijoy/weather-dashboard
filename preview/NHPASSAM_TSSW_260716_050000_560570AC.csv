@@ -1,0 +1,5 @@
+StationID,DateTime,MobileNumber,Battery,WaterLevel,HourlyRain,DailyRainfall,Spare,Spare
+&560570AC,16/07/26 03:00,4,12.7,00.000,--,--,--,--
+&560570AC,16/07/26 04:00,4,12.7,00.000,--,--,--,--
+&560570AC,16/07/26 05:00,4,12.7,00.000,--,--,--,--
+
