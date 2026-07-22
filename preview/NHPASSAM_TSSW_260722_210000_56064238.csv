@@ -1,0 +1,3 @@
+StationID,DateTime,MobileNumber,Battery,WaterLevel,HourlyRain,DailyRainfall,Spare,Spare
+&56064238,22/07/26 21:00,9116153281,12.3,115.656,000.00,000.00,--,--
+
