@@ -1,0 +1,4 @@
+&Station ID, Date and Time, MobileNumber,Battery,WaterLevel,HourlyRain,Dailyrain, AT,SnowDepth,Evaporation,WS,WD,At.pressure,RH,Sun Radiation
+5603BBAE,09/08/26 17:45,7428460351,11.1,--,0.00,0.80,19.90,--,1.60,1.00,321,600.20,074,719.5
+5603BBAE,09/08/26 18:00,7428460351,11.0,--,0.00,0.80,32.00,--,2.60,1.30,319,600.20,073,628.1
+
