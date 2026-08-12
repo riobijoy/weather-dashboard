@@ -1,0 +1,5 @@
+StationID,DateTime,MobileNumber,Battery,WaterLevel,HourlyRain,DailyRainfall,Spare,Spare
+&56060FE0,12/08/26 08:00,7428459764,12.1,92.025,--,--,--,--
+&56060FE0,12/08/26 09:00,7428459764,12.5,92.023,--,--,--,--
+&56060FE0,12/08/26 10:00,7428459764,13.8,92.113,--,--,--,--
+
