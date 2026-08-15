@@ -442,6 +442,13 @@
     },
     {
         "folder": "NHPASSAM",
+        "file": "TSSW_260816_060000_5603BBAE.csv",
+        "station_id": "Station ID",
+        "date": "Date and Time",
+        "preview_file": "preview/NHPASSAM_TSSW_260816_060000_5603BBAE.csv"
+    },
+    {
+        "folder": "NHPASSAM",
         "file": "TSSW_260816_053100_5603BBAE.csv",
         "station_id": "Station ID",
         "date": "Date and Time",
@@ -547,10 +554,24 @@
     },
     {
         "folder": "NHPASSAM",
+        "file": "TSSW_260816_011800_5603E500.csv",
+        "station_id": "5603E500",
+        "date": "16/08/26 01:15",
+        "preview_file": "preview/NHPASSAM_TSSW_260816_011800_5603E500.csv"
+    },
+    {
+        "folder": "NHPASSAM",
         "file": "TSSW_260816_011600_5603BBAE.csv",
         "station_id": "Station ID",
         "date": "Date and Time",
         "preview_file": "preview/NHPASSAM_TSSW_260816_011600_5603BBAE.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_260816_011500_5605A816.csv",
+        "station_id": "5605A816",
+        "date": "16/08/26 01:15",
+        "preview_file": "preview/NHPASSAM_TSSW_260816_011500_5605A816.csv"
     },
     {
         "folder": "NHPASSAM",
@@ -677,26 +698,5 @@
         "station_id": "5605A816",
         "date": "16/08/26 01:00",
         "preview_file": "preview/NHPASSAM_TSSW_260816_010000_5605A816.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260816_010000_56058EFA.csv",
-        "station_id": "56058EFA",
-        "date": "16/08/26 01:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260816_010000_56058EFA.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260816_010000_56058028.csv",
-        "station_id": "56058028",
-        "date": "16/08/26 01:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260816_010000_56058028.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260816_010000_56057E7E.csv",
-        "station_id": "56057E7E",
-        "date": "16/08/26 01:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260816_010000_56057E7E.csv"
     }
 ]
