@@ -36,6 +36,20 @@
     },
     {
         "folder": "NHPASSAM",
+        "file": "TSSW_260817_191800_5603E500.csv",
+        "station_id": "5603E500",
+        "date": "17/08/26 19:15",
+        "preview_file": "preview/NHPASSAM_TSSW_260817_191800_5603E500.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_260817_191500_5605A816.csv",
+        "station_id": "5605A816",
+        "date": "17/08/26 19:15",
+        "preview_file": "preview/NHPASSAM_TSSW_260817_191500_5605A816.csv"
+    },
+    {
+        "folder": "NHPASSAM",
         "file": "TSSW_260817_190100_5604A43E.csv",
         "station_id": "5604A43E",
         "date": "17/08/26 19:00",
@@ -145,40 +159,5 @@
         "station_id": "5605C322",
         "date": "17/08/26 19:00",
         "preview_file": "preview/NHPASSAM_TSSW_260817_190000_5605C322.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260817_190000_5605BB60.csv",
-        "station_id": "5605BB60",
-        "date": "17/08/26 19:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260817_190000_5605BB60.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260817_190000_5605B5B2.csv",
-        "station_id": "5605B5B2",
-        "date": "17/08/26 19:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260817_190000_5605B5B2.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260817_190000_5605A816.csv",
-        "station_id": "5605A816",
-        "date": "17/08/26 19:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260817_190000_5605A816.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260817_190000_56058EFA.csv",
-        "station_id": "56058EFA",
-        "date": "17/08/26 19:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260817_190000_56058EFA.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260817_190000_56058028.csv",
-        "station_id": "56058028",
-        "date": "17/08/26 19:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260817_190000_56058028.csv"
     }
 ]
