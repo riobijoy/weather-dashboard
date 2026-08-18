@@ -201,19 +201,5 @@
         "station_id": "560563DA",
         "date": "19/08/26 02:00",
         "preview_file": "preview/NHPASSAM_TSSW_260819_020000_560563DA.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260819_020000_56055892.csv",
-        "station_id": "56055892",
-        "date": "19/08/26 02:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260819_020000_56055892.csv"
-    },
-    {
-        "folder": "NHPASSAM",
-        "file": "TSSW_260819_020000_56054BE4.csv",
-        "station_id": "56054BE4",
-        "date": "19/08/26 02:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260819_020000_56054BE4.csv"
     }
 ]
