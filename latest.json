@@ -1,24 +1,24 @@
 [
     {
         "folder": "FREMAANHP02",
-        "file": "TSSW_260918_120000_56061C96.csv",
+        "file": "TSSW_260918_160000_56061C96.csv",
         "station_id": "56061C96",
-        "date": "18/09/26 12:00",
-        "preview_file": "preview/FREMAANHP02_TSSW_260918_120000_56061C96.csv"
+        "date": "18/09/26 16:00",
+        "preview_file": "preview/FREMAANHP02_TSSW_260918_160000_56061C96.csv"
     },
     {
         "folder": "FREMAANHP02",
-        "file": "TSSW_260918_120000_560417B0.csv",
-        "station_id": "560417B0",
-        "date": "18/09/26 12:00",
-        "preview_file": "preview/FREMAANHP02_TSSW_260918_120000_560417B0.csv"
-    },
-    {
-        "folder": "FREMAANHP02",
-        "file": "TSSW_260918_130000_5603EBD2.csv",
+        "file": "TSSW_260918_160000_5603EBD2.csv",
         "station_id": "5603EBD2",
-        "date": "18/09/26 13:00",
-        "preview_file": "preview/FREMAANHP02_TSSW_260918_130000_5603EBD2.csv"
+        "date": "18/09/26 16:00",
+        "preview_file": "preview/FREMAANHP02_TSSW_260918_160000_5603EBD2.csv"
+    },
+    {
+        "folder": "FREMAANHP02",
+        "file": "TSSW_260918_160000_560417B0.csv",
+        "station_id": "560417B0",
+        "date": "18/09/26 16:00",
+        "preview_file": "preview/FREMAANHP02_TSSW_260918_160000_560417B0.csv"
     },
     {
         "folder": "NHPASSAM",
@@ -29,16 +29,16 @@
     },
     {
         "folder": "NHPASSAM",
-        "file": "TSSW_260919_120000_5603BBAE.csv",
+        "file": "TSSW_260919_154600_5603BBAE.csv",
         "station_id": "Station ID",
         "date": "Date and Time",
-        "preview_file": "preview/NHPASSAM_TSSW_260919_120000_5603BBAE.csv"
+        "preview_file": "preview/NHPASSAM_TSSW_260919_154600_5603BBAE.csv"
     },
     {
         "folder": "NHPASSAM",
-        "file": "TSSW_260919_120000_56048C00.csv",
+        "file": "TSSW_260919_160000_56048C00.csv",
         "station_id": "56048C00",
-        "date": "19/09/26 12:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260919_120000_56048C00.csv"
+        "date": "19/09/26 16:00",
+        "preview_file": "preview/NHPASSAM_TSSW_260919_160000_56048C00.csv"
     }
 ]
