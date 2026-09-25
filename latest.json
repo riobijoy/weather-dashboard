@@ -1,17 +1,17 @@
 [
     {
         "folder": "FREMAANHP02",
-        "file": "TSSW_260924_120000_56061C96.csv",
+        "file": "TSSW_260924_130000_56061C96.csv",
         "station_id": "56061C96",
-        "date": "24/09/26 12:00",
-        "preview_file": "preview/FREMAANHP02_TSSW_260924_120000_56061C96.csv"
+        "date": "24/09/26 13:00",
+        "preview_file": "preview/FREMAANHP02_TSSW_260924_130000_56061C96.csv"
     },
     {
         "folder": "FREMAANHP02",
-        "file": "TSSW_260924_120000_560417B0.csv",
+        "file": "TSSW_260924_130000_560417B0.csv",
         "station_id": "560417B0",
-        "date": "24/09/26 12:00",
-        "preview_file": "preview/FREMAANHP02_TSSW_260924_120000_560417B0.csv"
+        "date": "24/09/26 13:00",
+        "preview_file": "preview/FREMAANHP02_TSSW_260924_130000_560417B0.csv"
     },
     {
         "folder": "FREMAANHP02",
@@ -29,16 +29,44 @@
     },
     {
         "folder": "NHPASSAM",
-        "file": "TSSW_260926_030200_5603BBAE.csv",
+        "file": "TSSW_260926_051600_5603BBAE.csv",
         "station_id": "Station ID",
         "date": "Date and Time",
-        "preview_file": "preview/NHPASSAM_TSSW_260926_030200_5603BBAE.csv"
+        "preview_file": "preview/NHPASSAM_TSSW_260926_051600_5603BBAE.csv"
     },
     {
         "folder": "NHPASSAM",
-        "file": "TSSW_260926_030000_56048C00.csv",
+        "file": "TSSW_260926_060000_56048C00.csv",
         "station_id": "56048C00",
-        "date": "26/09/26 03:00",
-        "preview_file": "preview/NHPASSAM_TSSW_260926_030000_56048C00.csv"
+        "date": "26/09/26 06:00",
+        "preview_file": "preview/NHPASSAM_TSSW_260926_060000_56048C00.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_260926_050000_5606AF18.csv",
+        "station_id": "5606AF18",
+        "date": "26/09/26 05:00",
+        "preview_file": "preview/NHPASSAM_TSSW_260926_050000_5606AF18.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_260926_050000_5606A1CA.csv",
+        "station_id": "5606A1CA",
+        "date": "26/09/26 05:00",
+        "preview_file": "preview/NHPASSAM_TSSW_260926_050000_5606A1CA.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_260926_050000_56069A82.csv",
+        "station_id": "56069A82",
+        "date": "26/09/26 05:00",
+        "preview_file": "preview/NHPASSAM_TSSW_260926_050000_56069A82.csv"
+    },
+    {
+        "folder": "NHPASSAM",
+        "file": "TSSW_260926_050000_56068726.csv",
+        "station_id": "56068726",
+        "date": "26/09/26 05:00",
+        "preview_file": "preview/NHPASSAM_TSSW_260926_050000_56068726.csv"
     }
 ]
